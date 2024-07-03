@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "d8f6cb2e-cd24-4a65-87a2-82dfacdb9d4e",
+		"name": "Social Media API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"mobileNo\": \"1234567890\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password\"\n}"
+						},
+							"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "user-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Smith\",\n    \"mobileNo\": \"1234567890\",\n    \"email\": \"john.smith@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "user-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "user-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discussion",
+			"item": [
+				{
+					"name": "Create Discussion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"user-id-here\",\n    \"text\": \"This is a sample discussion\",\n    \"image\": \"image-url-here\",\n    \"hashtags\": [\"#example\", \"#discussion\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/discussions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Discussions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discussions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Discussion by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discussions/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "discussion-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Discussion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Updated discussion text\",\n    \"image\": \"updated-image-url-here\",\n    \"hashtags\": [\"#updated\", \"#discussion\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/discussions/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "discussion-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Discussion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discussions/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions",
+								"{id}"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "discussion-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Discussions by Tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discussions/search?tag={tag}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions",
+								"search"
+							],
+							"query": [
+								{
+									"key": "tag",
+									"value": "tag-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Discussions by Text",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/discussions/search?text={text}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"discussions",
+								"search"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "text-here"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
