@@ -1,0 +1,67 @@
+package com.example.socialmedia.controllers;
+
+import com.example.socialmedia.models.Discussion;
+import com.example.socialmedia.repositories.DiscussionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/discussions")
+public class DiscussionController {
+
+    @Autowired
+    private DiscussionRepository discussionRepository;
+
+    @GetMapping
+    public List<Discussion> getAllDiscussions() {
+        return discussionRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Discussion> getDiscussionById(@PathVariable String id) {
+        Optional<Discussion> discussion = discussionRepository.findById(id);
+        if (discussion.isPresent()) {
+            return ResponseEntity.ok(discussion.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
+    public Discussion createDiscussion(@RequestBody Discussion discussion) {
+        return discussionRepository.save(discussion);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Discussion> updateDiscussion(@PathVariable String id, @RequestBody Discussion discussion) {
+        Optional<Discussion> existingDiscussion = discussionRepository.findById(id);
+        if (existingDiscussion.isPresent()) {
+            discussion.setId(id);
+            discussionRepository.save(discussion);
+            return ResponseEntity.ok(discussion);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDiscussion(@PathVariable String id) {
+        discussionRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    public List<Discussion> searchDiscussions(@RequestParam(required = false) String tag, @RequestParam(required = false) String text) {
+        if (tag != null) {
+            return discussionRepository.findByHashtagsIn(List.of(tag));
+        }
+        if (text != null) {
+            return discussionRepository.findByTextContaining(text);
+        }
+        return List.of();
+    }
+}
